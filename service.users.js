@@ -1,101 +1,101 @@
 import { backendAPI } from "./instacnes";
 import {
-    addInstace,
-    addInstaceGroup,
-    addInstaceMethod,
-    addInstaceGroupMethod,
+  addInstace,
+  addInstaceGroup,
+  addInstaceMethod,
+  addInstaceGroupMethod,
 } from "./axios.helpers";
 
 const addInstanceUsers = addInstace(backendAPI, {
-    fetchUser: () => ({
-        method: "get",
-        url: "/user/read",
-    }),
-    createUser: (userInfo) => ({
-        method: "post",
-        url: "/user/create",
-        data: userInfo,
-    }),
-    updateUser: (userInfo) => ({
-        method: "post",
-        url: "/user/update",
-        data: userInfo,
-    }),
-    deleteUser: (userInfo) => ({
-        method: "post",
-        url: "/user/delete",
-        data: userInfo,
-    }),
+  fetchUser: () => ({
+    method: "get",
+    url: "/user/read",
+  }),
+  createUser: (userInfo) => ({
+    method: "post",
+    url: "/user/create",
+    data: userInfo,
+  }),
+  updateUser: (userInfo) => ({
+    method: "post",
+    url: "/user/update",
+    data: userInfo,
+  }),
+  deleteUser: (userInfo) => ({
+    method: "post",
+    url: "/user/delete",
+    data: userInfo,
+  }),
 });
 
 const addInstanceMethodUsers = addInstaceMethod(backendAPI, {
-    get: {
-        fetchUser: () => ({
-            url: "/user/read",
-        }),
-    },
-    post: {
-        createUser: (userInfo) => ({
-            url: "/user/create",
-            data: userInfo,
-        }),
-        updateUser: (userInfo) => ({
-            url: "/user/update",
-            data: userInfo,
-        }),
-        deleteUser: (userInfo) => ({
-            url: "/user/delete",
-            data: userInfo,
-        }),
-    },
+  get: {
+    fetchUser: () => ({
+      url: "/user/read",
+    }),
+  },
+  post: {
+    createUser: (userInfo) => ({
+      url: "/user/create",
+      data: userInfo,
+    }),
+    updateUser: (userInfo) => ({
+      url: "/user/update",
+      data: userInfo,
+    }),
+    deleteUser: (userInfo) => ({
+      url: "/user/delete",
+      data: userInfo,
+    }),
+  },
 });
 
 const addInstanceGroupUsers = addInstaceGroup(backendAPI, {
-    todos: {
-        fetchUser: () => ({
-            method: "get",
-            url: "/user/read",
-        }),
-        createUser: (userInfo) => ({
-            method: "post",
-            url: "/user/create",
-            data: userInfo,
-        }),
-        updateUser: (userInfo) => ({
-            method: "post",
-            url: "/user/update",
-            data: userInfo,
-        }),
-        deleteUser: (userInfo) => ({
-            method: "post",
-            url: "/user/delete",
-            data: userInfo,
-        }),
-    },
+  users: {
+    fetchUser: () => ({
+      method: "get",
+      url: "/user/read",
+    }),
+    createUser: (userInfo) => ({
+      method: "post",
+      url: "/user/create",
+      data: userInfo,
+    }),
+    updateUser: (userInfo) => ({
+      method: "post",
+      url: "/user/update",
+      data: userInfo,
+    }),
+    deleteUser: (userInfo) => ({
+      method: "post",
+      url: "/user/delete",
+      data: userInfo,
+    }),
+  },
 });
 
 const addInstanceGroupMethodUsers = addInstaceGroupMethod(backendAPI, {
-    todos: {
-        get: {
-            fetchUser: () => ({
-                url: "/user/read",
-            }),
-        },
-        post: {
-            createUser: (userInfo) => ({
-                url: "/user/create",
-                data: userInfo,
-            }),
-            updateUser: (userInfo) => ({
-                url: "/user/update",
-                data: userInfo,
-            }),
-            deleteUser: (userInfo) => ({
-                url: "/user/delete",
-                data: userInfo,
-            }),
-        },
+  users: {
+    get: {
+      fetchUser: () => ({
+        url: "/user/read",
+      }),
     },
+    post: {
+      createUser: (userInfo) => ({
+        url: "/user/create",
+        data: userInfo,
+      }),
+      updateUser: (userInfo) => ({
+        url: "/user/update",
+        data: userInfo,
+      }),
+      deleteUser: (userInfo) => ({
+        url: "/user/delete",
+        data: userInfo,
+      }),
+    },
+  },
 });
 
 /* export const {
