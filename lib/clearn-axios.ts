@@ -1,23 +1,45 @@
-import axios, { Axios, AxiosInstance } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
-function addInstance(
-  instance: AxiosInstance,
-  instanceObjectAPI: object
-): object {
-  const instanceMap = ([key, callback]: [string, Function]) => [
-    key,
-    (...parameters: any[]) => instance(callback(...parameters)),
-  ];
-  return Object.fromEntries(Object.entries(instanceObjectAPI).map(instanceMap));
+interface config {
+  [key: string]: (...args: any[]) => AxiosRequestConfig;
 }
 
 const instance = axios.create({
   baseURL: "https://naver.com",
 });
 
-const { fetchA } = addInstance(instance, {
-  fetchA: (name: string, age: number) => ({
+const services = {
+  fetchUser: (name: string): AxiosRequestConfig => ({
     method: "GET",
-    url: "/",
+    url: `/${name}`,
   }),
-});
+  createUser: (name: string): AxiosRequestConfig => ({
+    method: "POST",
+    url: `/${name}`,
+  }),
+};
+
+type FunctionType = (...args: any[]) => any;
+
+function upgrade<T extends Record<string, FunctionType>>(services: T) {
+  type FunctionKeys = keyof T;
+  type ParametersMapping = {
+    [K in FunctionKeys]: Parameters<T[K]>;
+  };
+
+  const upgraded = {} as {
+    [K in FunctionKeys]: (...args: ParametersMapping[K]) => Promise<AxiosResponse<any, any>>;
+  };
+
+  for (const key in services) {
+    const fn = services[key];
+    upgraded[key] = (...args: any[]) => {
+      console.log(`Calling ${key} with `, args);
+      return fn(...args);
+    };
+  }
+
+  return upgraded;
+}
+
+const { fetchUser } = upgrade(services);
