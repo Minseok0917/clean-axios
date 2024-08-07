@@ -1,10 +1,10 @@
 ## Clean Axios
 
 <details>
-    <summary>addInstace</summary>
+    <summary>addInstance</summary>
 
 ```javascript
-const users = addInstace(backendAPI, {
+const users = addInstance(backendAPI, {
   fetchUser: () => ({
     method: "get",
     url: "/user/read",
@@ -37,10 +37,10 @@ export const {
 </details>
 
 <details>
-    <summary>addInstaceMethod</summary>
+    <summary>addInstanceMethod</summary>
 
 ```javascript
-const users = addInstaceMethod(backendAPI, {
+const users = addInstanceMethod(backendAPI, {
   get: {
     fetchUser: () => ({
       url: "/user/read",
@@ -77,10 +77,10 @@ export const {
 </details>
 
 <details>
-    <summary>addInstaceGroup</summary>
+    <summary>addInstanceGroup</summary>
 
 ```javascript
-const users = addInstaceGroup(backendAPI, {
+const users = addInstanceGroup(backendAPI, {
   users: {
     fetchUser: () => ({
       method: "get",
@@ -117,10 +117,10 @@ export const {
 </details>
 
 <details>
-    <summary>addInstaceGroupMethod</summary>
+    <summary>addInstanceGroupMethod</summary>
 
 ```javascript
-const users = addInstaceGroupMethod(backendAPI, {
+const users = addInstanceGroupMethod(backendAPI, {
   users: {
     get: {
       fetchUser: () => ({
